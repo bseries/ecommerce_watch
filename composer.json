@@ -19,7 +19,7 @@
     },
     "repositories": [
       { "type": "vcs", "url": "https://github.com/uor/li3_flash_message" },
-      { "type": "vcs", "url": "git@bitbucket.org:atelierdisko/base_core.git" }.
+      { "type": "vcs", "url": "git@bitbucket.org:atelierdisko/base_core.git" },
       { "type": "vcs", "url": "git@bitbucket.org:atelierdisko/ecommerce_core.git" }
    ]
 }
