@@ -10,17 +10,12 @@ $this->set([
 ?>
 <article class="view-<?= $this->_config['controller'] . '-' . $this->_config['template'] ?> use-list">
 
-	<div class="top-actions">
-		<?= $this->html->link($t('new watcher'), ['action' => 'add', 'library' => 'ecommerce_watch'], ['class' => 'button add']) ?>
-	</div>
-
 	<?php if ($data->count()): ?>
 		<table>
 			<thead>
 				<tr>
-					<td data-sort="code" class="code emphasize list-sort"><?= $t('Code') ?>
-					<td data-sort="type" class="type list-sort"><?= $t('Type') ?>
-					<td data-sort="uses-left" class="uses-left list-sort"><?= $t('Uses Left') ?>
+					<td data-sort="user" class="user list-sort"><?= $t('User') ?>
+					<td data-sort="subject" class="subject list-sort"><?= $t('Subject') ?>
 					<td data-sort="created" class="date created list-sort desc"><?= $t('Created') ?>
 					<td class="actions">
 						<?= $this->form->field('search', [
@@ -32,11 +27,26 @@ $this->set([
 			</thead>
 			<tbody class="list">
 				<?php foreach ($data as $item): ?>
-					<?php $type = $item->type() ?>
+					<?php $subject = $item->subject() ?>
 				<tr data-id="<?= $item->id ?>">
-					<td class="code emphasize"><?= $item->code ?>
-					<td class="type"><?= $type->title() ?>
-					<td class="uses-left"><?= $item->uses_left ?: '–' ?>
+					<td class="user">
+						<?php if ($user): ?>
+							<?= $this->html->link($user->number, [
+								'controller' => $user->isVirtual() ? 'VirtualUsers' : 'Users',
+								'action' => 'edit', 'id' => $user->id,
+								'library' => 'base_core'
+							]) ?>
+						<?php else: ?>
+							-
+						<?php endif ?>
+
+					<td class="subject">
+						<?= $subject->model ?> /
+						<?php if ($subject->title): ?>
+							<?= $subject->title ?>
+						<?php else: ?>
+							<?= $subject->id ?>
+						<?php endif ?>
 					<td class="date created">
 						<time datetime="<?= $this->date->format($item->created, 'w3c') ?>">
 							<?= $this->date->format($item->created, 'date') ?>

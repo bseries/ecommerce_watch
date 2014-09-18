@@ -14,9 +14,6 @@ use lithium\net\http\Router;
 
 $persist = ['persist' => ['admin', 'controller']];
 
-Router::connect('/admin/ecommerce/watchers/{:id:[0-9]+}', [
-	'controller' => 'Watche:rs', 'library' => 'ecommerce_watch', 'action' => 'view', 'admin' => true
-], $persist);
 Router::connect('/admin/ecommerce/watchers/{:action}', [
 	'controller' => 'Watchers', 'library' => 'ecommerce_watch', 'admin' => true
 ], $persist);

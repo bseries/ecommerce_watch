@@ -21,6 +21,16 @@ class Watchers extends \base_core\models\Base {
 	protected static $_actsAs = [
 		'base_core\extensions\data\behavior\Timestamp'
 	];
+
+	public function subject($entity) {
+		$model = $entity->model;
+
+		return $model::find('first', [
+			'conditions' => [
+				'id' => $entity->foreign_key
+			]
+		]);
+	}
 }
 
 ?>

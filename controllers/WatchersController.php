@@ -12,16 +12,10 @@
 
 namespace ecommerce_watch\controllers;
 
-use lithium\g11n\Message;
-use li3_flash_message\extensions\storage\FlashMessage;
-use ecommerce_watch\models\VoucherCodes;
-use ecommerce_watch\models\Vouchers;
-use li3_access\security\Access;
+use ecommerce_watch\models\Watchers;
 
 class WatchersController extends \base_core\controllers\BaseController {
 
-	use \base_core\controllers\AdminAddTrait;
-	use \base_core\controllers\AdminEditTrait;
 	use \base_core\controllers\AdminDeleteTrait;
 
 	public function admin_index() {
@@ -30,16 +24,6 @@ class WatchersController extends \base_core\controllers\BaseController {
 		]);
 		return compact('data') + $this->_selects();
 	}
-
-	/*
-	protected function _selects($item = null) {
-		extract(Message::aliases());
-
-		// $types = Vouchers::find('list');
-
-		return compact('rules', 'types');
-	}
-	 */
 }
 
 ?>
