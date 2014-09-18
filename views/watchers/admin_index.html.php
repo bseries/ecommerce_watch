@@ -30,7 +30,7 @@ $this->set([
 					<?php $subject = $item->subject() ?>
 				<tr data-id="<?= $item->id ?>">
 					<td class="user">
-						<?php if ($user): ?>
+						<?php if ($user = $item->user()): ?>
 							<?= $this->html->link($user->number, [
 								'controller' => $user->isVirtual() ? 'VirtualUsers' : 'Users',
 								'action' => 'edit', 'id' => $user->id,
@@ -41,7 +41,7 @@ $this->set([
 						<?php endif ?>
 
 					<td class="subject">
-						<?= $subject->model ?> /
+						<?= $item->model ?> /
 						<?php if ($subject->title): ?>
 							<?= $subject->title ?>
 						<?php else: ?>
@@ -52,7 +52,6 @@ $this->set([
 							<?= $this->date->format($item->created, 'date') ?>
 						</time>
 					<td class="actions">
-						<?= $this->html->link($t('open'), ['id' => $item->id, 'action' => 'edit', 'library' => 'ecommerce_watch'], ['class' => 'button']) ?>
 				<?php endforeach ?>
 			</tbody>
 		</table>

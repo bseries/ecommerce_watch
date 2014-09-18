@@ -14,6 +14,8 @@ namespace ecommerce_watch\models;
 
 class Watchers extends \base_core\models\Base {
 
+	use \base_core\models\UserTrait;
+
 	protected $_meta = [
 		'source' => 'ecommerce_watchers'
 	];
