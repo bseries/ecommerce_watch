@@ -15,9 +15,9 @@ use lithium\g11n\Message;
 
 extract(Message::aliases());
 
-Panes::register('ecommerce.watchers', [
-	'title' => $t('Watchers'),
-	'url' => ['action' => 'index', 'controller' => 'Watchers', 'library' => 'ecommerce_watch', 'admin' => true],
+Panes::register('ecommerce.watches', [
+	'title' => $t('Watches'),
+	'url' => ['action' => 'index', 'controller' => 'Watches', 'library' => 'ecommerce_watch', 'admin' => true],
 	'weight' => 100
 ]);
 

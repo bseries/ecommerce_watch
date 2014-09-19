@@ -12,7 +12,7 @@
 
 use base_core\extensions\cms\Jobs;
 use base_core\models\Users;
-use ecommerce_watch\models\Watchers;
+use ecommerce_watch\models\Watches;
 use lithium\util\Set;
 
 Jobs::recur('ecommerce_watch:notify', function() {
@@ -22,7 +22,7 @@ Jobs::recur('ecommerce_watch:notify', function() {
 	// be always less then the total number of products.
 	//
 	// FIXME Set doesn't work with missing zero keys.
-	$nowInStock = Watchers::find('all', [
+	$nowInStock = Watches::find('all', [
 		'fields' => ['ecommerce_product_id'],
 		'group' => ['ecommerce_product_id']
 	])->find(function($item) {
@@ -30,24 +30,24 @@ Jobs::recur('ecommerce_watch:notify', function() {
 	});
 	$nowInStock = Set::extract(array_values($nowInStock->data(), '/ecommerce_product_id'));
 
-	// 2. Get all watchers
-	$watchers = Watchers::find('all', [
+	// 2. Get all watches
+	$watches = Watches::find('all', [
 		'conditions' => [
 			'ecommerce_product_id' => $nowInStock
 		],
 		'order' => ['user_id'] // Preorder for perfance reasons.
 	]);
 
-	// 3. Key watchers by user.
+	// 3. Key watches by user.
 	$users = [];
-	foreach ($watchers as $watcher) {
-		$user = $watcher->user();
+	foreach ($watches as $watch) {
+		$user = $watch->user();
 
 		if (!isset($users[$user->id])) {
-			$user->watchers = [];
+			$user->watches = [];
 			$users[$user->id] = $user;
  		}
-		$users[$user->id]->watchers[] = $watcher;
+		$users[$user->id]->watches[] = $watch;
 	}
 
 	// 4. Now mail each user list of watched products.
@@ -55,11 +55,11 @@ Jobs::recur('ecommerce_watch:notify', function() {
 		if (!$user->is_notified) {
 			continue;
 		}
-		Watchers::pdo()->beginTransaction();
+		Watches::pdo()->beginTransaction();
 
 		$products = [];
-		foreach ($user->watchers as $watcher) {
-			$products[] = $watcher->product();
+		foreach ($user->watches as $watch) {
+			$products[] = $watch->product();
 		}
 		$result = Mailer::deliver('watch', [
 			'to' => $user->email,
@@ -71,14 +71,14 @@ Jobs::recur('ecommerce_watch:notify', function() {
 		]);
 
 		// Prevent renotifications.
-		foreach ($user->watchers as $watcher) {
-			$result = $result && $watcher->delete();
+		foreach ($user->watchrs as $watch) {
+			$result = $result && $watch->delete();
 		}
 		if (!$result) {
-			Watchers::pdo()->rollback();
+			Watches::pdo()->rollback();
 			return false;
 		}
-		Watchers::pdo()->commit();
+		Watches::pdo()->commit();
 	}
 }, [
 	'frequency' => Jobs::FREQUENCY_LOW

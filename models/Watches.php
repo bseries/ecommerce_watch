@@ -14,12 +14,12 @@ namespace ecommerce_watch\models;
 
 use ecommerce_core\models\Products;
 
-class Watchers extends \base_core\models\Base {
+class Watches extends \base_core\models\Base {
 
 	use \base_core\models\UserTrait;
 
 	protected $_meta = [
-		'source' => 'ecommerce_watchers'
+		'source' => 'ecommerce_watches'
 	];
 
 	protected static $_actsAs = [
