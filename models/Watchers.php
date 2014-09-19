@@ -12,6 +12,8 @@
 
 namespace ecommerce_watch\models;
 
+use ecommerce_core\models\Products;
+
 class Watchers extends \base_core\models\Base {
 
 	use \base_core\models\UserTrait;
@@ -24,12 +26,10 @@ class Watchers extends \base_core\models\Base {
 		'base_core\extensions\data\behavior\Timestamp'
 	];
 
-	public function subject($entity) {
-		$model = $entity->model;
-
-		return $model::find('first', [
+	public function product($entity) {
+		return Products::find('first', [
 			'conditions' => [
-				'id' => $entity->foreign_key
+				'id' => $entity->ecommerce_product_id
 			]
 		]);
 	}

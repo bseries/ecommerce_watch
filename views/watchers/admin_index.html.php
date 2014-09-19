@@ -15,7 +15,7 @@ $this->set([
 			<thead>
 				<tr>
 					<td data-sort="user" class="user list-sort"><?= $t('User') ?>
-					<td data-sort="subject" class="subject list-sort"><?= $t('Subject') ?>
+					<td data-sort="product" class="product list-sort"><?= $t('Product') ?>
 					<td data-sort="created" class="date created list-sort desc"><?= $t('Created') ?>
 					<td class="actions">
 						<?= $this->form->field('search', [
@@ -27,7 +27,6 @@ $this->set([
 			</thead>
 			<tbody class="list">
 				<?php foreach ($data as $item): ?>
-					<?php $subject = $item->subject() ?>
 				<tr data-id="<?= $item->id ?>">
 					<td class="user">
 						<?php if ($user = $item->user()): ?>
@@ -40,13 +39,8 @@ $this->set([
 							-
 						<?php endif ?>
 
-					<td class="subject">
-						<?= $item->model ?> /
-						<?php if ($subject->title): ?>
-							<?= $subject->title ?>
-						<?php else: ?>
-							<?= $subject->id ?>
-						<?php endif ?>
+					<td class="product">
+						<?= $item->product()->title ?>
 					<td class="date created">
 						<time datetime="<?= $this->date->format($item->created, 'w3c') ?>">
 							<?= $this->date->format($item->created, 'date') ?>

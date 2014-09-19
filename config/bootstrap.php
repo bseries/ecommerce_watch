@@ -10,6 +10,7 @@
  * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  */
 
+require 'jobs.php';
 require 'panes.php';
 // require 'settings.php';
 // require 'media.php';

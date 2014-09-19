@@ -17,7 +17,8 @@ extract(Message::aliases());
 
 Panes::register('ecommerce.watchers', [
 	'title' => $t('Watchers'),
-	'url' => ['action' => 'index', 'controller' => 'Watchers', 'library' => 'ecommerce_watch', 'admin' => true]
+	'url' => ['action' => 'index', 'controller' => 'Watchers', 'library' => 'ecommerce_watch', 'admin' => true],
+	'weight' => 100
 ]);
 
 ?>
