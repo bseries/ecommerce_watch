@@ -61,7 +61,7 @@ Jobs::recur('ecommerce_watch:notify', function() {
 		foreach ($user->watches as $watch) {
 			$products[] = $watch->product();
 		}
-		$result = Mailer::deliver('watch', [
+		$result = Mailer::deliver('watch_update', [
 			'to' => $user->email,
 			'subject' => $t('Updates for watched products.'),
 			'data' => [
