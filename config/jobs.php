@@ -14,8 +14,12 @@ use base_core\extensions\cms\Jobs;
 use base_core\models\Users;
 use ecommerce_watch\models\Watches;
 use lithium\util\Set;
+use lithium\analysis\Logger;
+use li3_mailer\action\Mailer;
+use lithium\g11n\Message;
 
 Jobs::recur('ecommerce_watch:notify', function() {
+	extract(Message::aliases());
 
 	// 1. Check which products need notifications.
 	// Assumes the set of watched product id will
@@ -28,7 +32,11 @@ Jobs::recur('ecommerce_watch:notify', function() {
 	])->find(function($item) {
 		return $item->product()->stock() > 0;
 	});
-	$nowInStock = Set::extract(array_values($nowInStock->data(), '/ecommerce_product_id'));
+	if (!$nowInStock->count()) {
+		Logger::debug('No products again in stock; skipping.');
+		return true;
+	}
+	$nowInStock = Set::extract(array_values($nowInStock->data()), '/ecommerce_product_id');
 
 	// 2. Get all watches
 	$watches = Watches::find('all', [
@@ -71,7 +79,7 @@ Jobs::recur('ecommerce_watch:notify', function() {
 		]);
 
 		// Prevent renotifications.
-		foreach ($user->watchrs as $watch) {
+		foreach ($user->watches as $watch) {
 			$result = $result && $watch->delete();
 		}
 		if (!$result) {
