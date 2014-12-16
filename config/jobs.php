@@ -51,6 +51,12 @@ Jobs::recur('ecommerce_watch:notify', function() {
 	foreach ($watches as $watch) {
 		$user = $watch->user();
 
+		if (!$user) {
+			Logger::debug("User on watch has gone away; removing watch.");
+			$watch->delete();
+			continue;
+		}
+
 		if (!isset($users[$user->id])) {
 			$user->watches = [];
 			$users[$user->id] = $user;
