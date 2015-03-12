@@ -26,6 +26,13 @@ class Watches extends \base_core\models\Base {
 		'base_core\extensions\data\behavior\Timestamp'
 	];
 
+	public $belongsTo = [
+		'Product' => [
+			'to' => 'ecommerce_core\models\Products',
+			'key' => 'ecommerce_product_id'
+		]
+	];
+
 	public function product($entity) {
 		return Products::find('first', [
 			'conditions' => [
