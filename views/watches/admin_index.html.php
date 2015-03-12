@@ -1,5 +1,11 @@
 <?php
 
+use lithium\g11n\Message;
+
+$t = function($message, array $options = []) {
+	return Message::translate($message, $options + ['scope' => 'ecommerce_brand', 'default' => $message]);
+};
+
 $this->set([
 	'page' => [
 		'type' => 'multiple',
@@ -8,22 +14,24 @@ $this->set([
 ]);
 
 ?>
-<article class="view-<?= $this->_config['controller'] . '-' . $this->_config['template'] ?> use-list">
+<article
+	class="use-index-table"
+	data-endpoint-sort="<?= $this->url([
+		'action' => 'index',
+		'page' => $paginator->getPages()->current,
+		'orderField' => '__ORDER_FIELD__',
+		'orderDirection' => '__ORDER_DIRECTION__'
+	]) ?>"
+>
 
 	<?php if ($data->count()): ?>
 		<table>
 			<thead>
 				<tr>
-					<td data-sort="user" class="user list-sort"><?= $t('User') ?>
-					<td data-sort="product" class="product list-sort"><?= $t('Product') ?>
-					<td data-sort="created" class="date created list-sort desc"><?= $t('Created') ?>
+					<td data-sort="user.number" class="user table-sort"><?= $t('User') ?>
+					<td data-sort="product.number" class="product table-sort"><?= $t('Product') ?>
+					<td data-sort="modified" class="date modified table-sort desc"><?= $t('Modified') ?>
 					<td class="actions">
-						<?= $this->form->field('search', [
-							'type' => 'search',
-							'label' => false,
-							'placeholder' => $t('Filter'),
-							'class' => 'list-search'
-						]) ?>
 			</thead>
 			<tbody class="list">
 				<?php foreach ($data as $item): ?>
@@ -41,9 +49,9 @@ $this->set([
 
 					<td class="product">
 						<?= $item->product()->title ?>
-					<td class="date created">
-						<time datetime="<?= $this->date->format($item->created, 'w3c') ?>">
-							<?= $this->date->format($item->created, 'date') ?>
+					<td class="date modified">
+						<time datetime="<?= $this->date->format($item->modified, 'w3c') ?>">
+							<?= $this->date->format($item->modified, 'date') ?>
 						</time>
 					<td class="actions">
 				<?php endforeach ?>
@@ -52,4 +60,6 @@ $this->set([
 	<?php else: ?>
 		<div class="none-available"><?= $t('No items available, yet.') ?></div>
 	<?php endif ?>
+
+	<?=$this->view()->render(['element' => 'paging'], compact('paginator'), ['library' => 'base_core']) ?>
 </article>

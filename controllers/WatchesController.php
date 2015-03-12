@@ -12,18 +12,10 @@
 
 namespace ecommerce_watch\controllers;
 
-use ecommerce_watch\models\Watches;
-
 class WatchesController extends \base_core\controllers\BaseController {
 
+	use \base_core\controllers\AdminIndexTrait;
 	use \base_core\controllers\AdminDeleteTrait;
-
-	public function admin_index() {
-		$data = Watches::find('all', [
-			'order' => ['created' => 'desc']
-		]);
-		return compact('data') + $this->_selects();
-	}
 }
 
 ?>

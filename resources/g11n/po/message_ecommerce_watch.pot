@@ -1,0 +1,46 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Atelier Disko
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ecommerce_watch 1.0\n"
+"Report-Msgid-Bugs-To: info@atelierdisko.de\n"
+"POT-Creation-Date: 2015-03-12 18:16+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: config/jobs.php:81
+msgid "Updates for watched products."
+msgstr ""
+
+#: config/panes.php:19
+msgid "Watches"
+msgstr ""
+
+#: views/watches/admin_index.html.php:12
+msgid "watches"
+msgstr ""
+
+#: views/watches/admin_index.html.php:31
+msgid "User"
+msgstr ""
+
+#: views/watches/admin_index.html.php:32
+msgid "Product"
+msgstr ""
+
+#: views/watches/admin_index.html.php:33
+msgid "Modified"
+msgstr ""
+
+#: views/watches/admin_index.html.php:61
+msgid "No items available, yet."
+msgstr ""

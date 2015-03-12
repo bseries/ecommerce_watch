@@ -1,0 +1,46 @@
+# German translations for ecommerce_watch package.
+# Copyright (C) 2015 Atelier Disko
+# This file is distributed under the same license as the ecommerce_watch package.
+# Automatically generated, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ecommerce_watch 1.0\n"
+"Report-Msgid-Bugs-To: info@atelierdisko.de\n"
+"POT-Creation-Date: 2015-03-12 18:16+0100\n"
+"PO-Revision-Date: 2015-03-12 18:16+0100\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: config/jobs.php:81
+msgid "Updates for watched products."
+msgstr ""
+
+#: config/panes.php:19
+msgid "Watches"
+msgstr ""
+
+#: views/watches/admin_index.html.php:12
+msgid "watches"
+msgstr ""
+
+#: views/watches/admin_index.html.php:31
+msgid "User"
+msgstr ""
+
+#: views/watches/admin_index.html.php:32
+msgid "Product"
+msgstr ""
+
+#: views/watches/admin_index.html.php:33
+msgid "Modified"
+msgstr ""
+
+#: views/watches/admin_index.html.php:61
+msgid "No items available, yet."
+msgstr ""
