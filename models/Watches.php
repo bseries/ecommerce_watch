@@ -23,6 +23,7 @@ class Watches extends \base_core\models\Base {
 	];
 
 	protected static $_actsAs = [
+		'base_core\extensions\data\behavior\RelationsPlus',
 		'base_core\extensions\data\behavior\Timestamp'
 	];
 
@@ -32,14 +33,6 @@ class Watches extends \base_core\models\Base {
 			'key' => 'ecommerce_product_id'
 		]
 	];
-
-	public function product($entity) {
-		return Products::find('first', [
-			'conditions' => [
-				'id' => $entity->ecommerce_product_id
-			]
-		]);
-	}
 }
 
 ?>
