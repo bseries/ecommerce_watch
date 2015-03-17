@@ -22,16 +22,24 @@ class Watches extends \base_core\models\Base {
 		'source' => 'ecommerce_watches'
 	];
 
-	protected static $_actsAs = [
-		'base_core\extensions\data\behavior\RelationsPlus',
-		'base_core\extensions\data\behavior\Timestamp'
-	];
-
 	public $belongsTo = [
+		'User' => [
+			'to' => 'base_core\models\Users',
+			'key' => 'user_id'
+		],
+		'VirtualUser' => [
+			'to' => 'base_core\models\VirtualUsers',
+			'key' => 'virtual_user_id'
+		],
 		'Product' => [
 			'to' => 'ecommerce_core\models\Products',
 			'key' => 'ecommerce_product_id'
 		]
+	];
+
+	protected static $_actsAs = [
+		'base_core\extensions\data\behavior\RelationsPlus',
+		'base_core\extensions\data\behavior\Timestamp'
 	];
 }
 
