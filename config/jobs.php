@@ -28,10 +28,13 @@ Jobs::recur('ecommerce_watch:notify', function() {
 	// FIXME Set doesn't work with missing zero keys.
 	$nowInStock = Watches::find('all', [
 		'fields' => ['ecommerce_product_id'],
-		'group' => ['ecommerce_product_id']
-	])->find(function($item) {
-		return $item->product()->stock() > 0;
-	});
+		'group' => ['ecommerce_product_id'],
+		'with' => ['Product'],
+		'conditions' => [
+			'Product.is_published' => true,
+			'(Product.stock - Product.stock_reserved)' => ['>' => 0]
+		]
+	]);
 	if (!$nowInStock->count()) {
 		Logger::debug('No products again in stock; skipping.');
 		return true;
