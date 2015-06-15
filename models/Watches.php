@@ -16,8 +16,6 @@ use ecommerce_core\models\Products;
 
 class Watches extends \base_core\models\Base {
 
-	use \base_core\models\UserTrait;
-
 	protected $_meta = [
 		'source' => 'ecommerce_watches'
 	];
@@ -38,6 +36,7 @@ class Watches extends \base_core\models\Base {
 	];
 
 	protected static $_actsAs = [
+		'base_core\extensions\data\behavior\Ownable',
 		'base_core\extensions\data\behavior\RelationsPlus',
 		'base_core\extensions\data\behavior\Timestamp'
 	];
