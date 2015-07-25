@@ -45,16 +45,7 @@ $this->set([
 				<?php foreach ($data as $item): ?>
 				<tr data-id="<?= $item->id ?>">
 					<td class="user">
-						<?php if ($user = $item->user()): ?>
-							<?= $this->html->link($user->number, [
-								'controller' => $user->isVirtual() ? 'VirtualUsers' : 'Users',
-								'action' => 'edit', 'id' => $user->id,
-								'library' => 'base_core'
-							]) ?>
-						<?php else: ?>
-							-
-						<?php endif ?>
-
+						<?= $this->user->link($item->user()) ?>
 					<td class="product">
 						<?= $item->product()->title ?>
 					<td class="date modified">
