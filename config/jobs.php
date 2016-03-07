@@ -75,6 +75,7 @@ Jobs::recur('ecommerce_watch:notify', function() {
 	// 4. Now mail each user list of watched products.
 	foreach ($users as $user) {
 		if (!$user->is_notified) {
+			Logger::write('debug', "Skipping user {$user->id}, is not notified.");
 			continue;
 		}
 		Watches::pdo()->beginTransaction();
@@ -98,9 +99,12 @@ Jobs::recur('ecommerce_watch:notify', function() {
 			$result = $result && $watch->delete();
 		}
 		if (!$result) {
+			Logger::write('notice', 'Failed notify about watches for user: ' . $user->id);
+
 			Watches::pdo()->rollback();
 			return false;
 		}
+		Logger::write('debug', "Notified user {$user->id} about watches.");
 		Watches::pdo()->commit();
 	}
 }, [
