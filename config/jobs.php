@@ -65,6 +65,12 @@ Jobs::recur('ecommerce_watch:notify', function() {
 			continue;
 		}
 
+		if (!$user->is_active) {
+			Logger::debug("User on watch is not active; removing watch.");
+			$watch->delete();
+			continue;
+		}
+
 		if (!isset($users[$user->id])) {
 			$user->watches = [];
 			$users[$user->id] = $user;
