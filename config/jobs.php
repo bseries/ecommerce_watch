@@ -112,6 +112,7 @@ Jobs::recur('ecommerce_watch:notify', function() {
 		}
 		Logger::write('debug', "Notified user {$user->id} about watches.");
 		Watches::pdo()->commit();
+		return true;
 	}
 }, [
 	'frequency' => Jobs::FREQUENCY_LOW
