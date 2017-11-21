@@ -1,26 +1,18 @@
 {
-    "name": "atelierdisko/ecommerce_watch",
+    "name": "bseries/ecommerce_watch",
     "description": "Watchlist functionality for Boutique.",
-    "homepage": "https://atelierdisko.de",
     "type": "lithium-library",
     "license": "proprietary",
-    "authors": [
-        {
-          "name": "Atelier Disko",
-          "homepage": "https://atelierdisko.de"
-        }
-    ],
     "require": {
-        "php": "^5.5 || ^7.0",
-        "jschaedl/iban": "1.1.*",
-        "atelierdisko/base_core": "1.5.*@dev",
-        "atelierdisko/ecommerce_core": "1.5.*@dev",
         "atelierdisko/li3_mailer": "^1.1@stable || 1.1.0@dev",
-        "unionofrad/lithium": "^1.1",
-        "composer/installers": "1.*@stable"
+        "bseries/base_core": "1.5.x-dev",
+        "bseries/ecommerce_core": "1.5.x-dev",
+        "composer/installers": "1.*@stable",
+        "jschaedl/iban": "1.1.*",
+        "php": "^5.5 || ^7.0",
+        "unionofrad/lithium": "^1.1"
     },
     "repositories": [
-      { "type": "vcs", "url": "git@code.disko.io:base_core.git" },
       { "type": "vcs", "url": "git@code.disko.io:ecommerce_core.git" }
    ]
 }
