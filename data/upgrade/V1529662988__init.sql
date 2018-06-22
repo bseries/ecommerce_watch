@@ -7,4 +7,4 @@ CREATE TABLE `ecommerce_watches` (
   PRIMARY KEY (`id`),
   KEY `poly` (`ecommerce_product_id`),
   KEY `media_file` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB;
