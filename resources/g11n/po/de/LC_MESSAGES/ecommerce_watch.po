@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ecommerce_watch 1.0\n"
 "Report-Msgid-Bugs-To: info@atelierdisko.de\n"
-"POT-Creation-Date: 2015-03-12 18:16+0100\n"
+"POT-Creation-Date: 2018-07-12 12:51+0200\n"
 "PO-Revision-Date: 2015-03-18 15:45+0100\n"
 "Last-Translator: David Persson <davidpersson@gmx.de>\n"
 "Language-Team: none\n"
@@ -18,30 +18,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.7\n"
 
-#: config/jobs.php:81
+#: config/jobs.php:96
 msgid "Updates for watched products."
 msgstr "Updates auf der Watchlist"
 
-#: config/panes.php:19
+#: config/panes.php:24
+msgid "Watchlists"
+msgstr ""
+
+#: config/widgets.php:33
 msgid "Watches"
+msgstr ""
+
+#: config/widgets.php:38
+msgid "Total"
+msgstr ""
+
+#: config/widgets.php:39
+msgid "Ø per user"
 msgstr ""
 
 #: views/watches/admin_index.html.php:12
 msgid "watches"
 msgstr ""
 
-#: views/watches/admin_index.html.php:31
+#: views/watches/admin_index.html.php:32
 msgid "User"
 msgstr ""
 
-#: views/watches/admin_index.html.php:32
+#: views/watches/admin_index.html.php:33
 msgid "Product"
 msgstr ""
 
-#: views/watches/admin_index.html.php:33
+#: views/watches/admin_index.html.php:34
 msgid "Modified"
 msgstr ""
 
-#: views/watches/admin_index.html.php:61
+#: views/watches/admin_index.html.php:39
+msgid "Filter"
+msgstr ""
+
+#: views/watches/admin_index.html.php:60
 msgid "No items available, yet."
 msgstr ""
