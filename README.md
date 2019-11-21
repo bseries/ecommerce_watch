@@ -1,2 +1,2 @@
-# B-Series Module
+# eCommerce Watch B-Series Module
 ## Watchlist functionality for Boutique.
